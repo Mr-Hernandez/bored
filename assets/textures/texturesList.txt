@@ -1,0 +1,4 @@
+fireTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures\fireTile.png
+grassTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures\grassTile.png
+dirtTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures\dirtTile.png
+char1|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\char1.png

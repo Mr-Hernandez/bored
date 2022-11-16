@@ -1,0 +1,5 @@
+- map object should accept a name or have some way of choosing Map
+- remember to deallocate old maptiles array
+- set up a post array creation where tile properties are updated
+- make access to map tiles easy from the outside using grid coordinates
+and solving for correct array inside the class.
