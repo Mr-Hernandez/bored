@@ -3,3 +3,26 @@
 - set up a post array creation where tile properties are updated
 - make access to map tiles easy from the outside using grid coordinates
 and solving for correct array inside the class.
+
+-- Texturemanager finished
+
+- Next 11/16
+    - (ISSUE)I have the map drawing and even loading from a map.txt file. I have textures managed
+      so they are only loaded once, but currently I have only one texture variable that tries
+      to access it, so when it requests again and the texture is already loaded, then the texture's
+      address remains the same and the sf::Texture* variable still have valid data. But what if I
+      create another sf::Texture* somewhere and request a texture that is already loaded, does the
+      function still return the pointer to the texture's location? I think I might have forgotten that.
+
+      - check if a second sf::Texture* requesting a texture that is already loaded will receive an address.
+
+    - (CHARACTER)Let say that is taken care of or easy to fix. Then what? Next would be creating characters. How will I do this?
+      What are character' properties? Some simple things.
+        - health and stats in general, like names and such information.
+        - position on Map
+      Those things are a given, but what about characters as an object or struct?
+        - They will need to have an associated texture for drawing the character.
+        - A way to destroy the character?
+        -
+    - (TURN-BASED) How would I implement turn based combat? First I want to be able to draw stuff to places, and such.
+    - (MENU) It doesn't really feel like a game without adding a menu or something.

@@ -2,3 +2,5 @@ fireTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures
 grassTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures\grassTile.png
 dirtTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures\dirtTile.png
 char1|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\char1.png
+SerasVictoria|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\SerasVictoria.png
+SonGoku|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\SonGoku.png

@@ -6,6 +6,8 @@
 #include "Timer.hpp"
 #include "Map.hpp"
 #include "TextureManager.hpp"
+#include "Character.hpp"
+
 
 struct Bus{
     State* s_state = nullptr;
@@ -13,7 +15,7 @@ struct Bus{
     Timer* s_timer = nullptr;
     Map* s_map = nullptr;
     TextureManager* s_texMan = nullptr;
-
+    Character* s_character = nullptr;
 
 };
 

@@ -14,12 +14,16 @@ void Game::Update(){
     m_event.Update(&m_bus);
     m_draw.drawMap(&m_bus);
 
+
     sf::Texture* texture;
     texture = m_bus.s_texMan->requestTexture("char1");
     sf::Sprite char1Sprite;
     char1Sprite.setTexture(*texture);
     char1Sprite.setPosition(100.0, 200.0);
     m_bus.s_mainWindow->draw(char1Sprite);
+
+    m_draw.drawCharacter(&m_bus);
+
 
 
 
@@ -43,5 +47,6 @@ void Game::init_bus(){
     m_bus.s_map = &m_map;
     m_bus.s_state = &state;
     m_bus.s_texMan = &m_texMan;
+    m_bus.s_character = &m_character;
 }
 

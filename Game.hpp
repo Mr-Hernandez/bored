@@ -7,6 +7,7 @@
 #include "Bus.hpp"
 #include "Draw.hpp"
 #include "TextureManager.hpp"
+#include "Character.hpp"
 
 class Game{
 
@@ -36,5 +37,6 @@ private:
     State state;
     Draw m_draw;
     TextureManager m_texMan;
+    Character m_character;
 
 };

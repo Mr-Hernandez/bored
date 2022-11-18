@@ -15,7 +15,7 @@ sf::Texture* TextureManager::requestTexture(const std::string& texName){
         // check if it exists
         // load if needed
         // add to tally
-        if(texName == i->first){
+         if(texName == i->first){
             if(i->second.second.second == 0){
                 loadTexture(i->second.first, i);
                 i->second.second.second = 2;

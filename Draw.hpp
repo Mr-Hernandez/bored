@@ -9,6 +9,7 @@ public:
     ~Draw();
 
     void drawMap(Bus* m_bus);
+    void drawCharacter(Bus* m_bus);
 
 private:
 
