@@ -23,7 +23,7 @@ sf::Texture* TextureManager::requestTexture(const std::string& texName){
                 // no load but set count to 2
                 i->second.second.second = 2;
             }
-            std::cout << "request found for: " << texName << std::endl;
+//            std::cout << "request found for: " << texName << std::endl;
             return &(*(i->second.second.first));
         }
         //else error, file name not found
@@ -97,7 +97,7 @@ void TextureManager::printTextureCount(){
     for(auto i = texContainer.begin(); i != texContainer.end(); ++i){
         textureCount++;
     }
-    std::cout << "TextureCount: " << textureCount << std::endl;
+//    std::cout << "TextureCount: " << textureCount << std::endl;
 }
 
 

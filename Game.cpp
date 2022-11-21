@@ -9,23 +9,11 @@ Game::Game(){
 Game::~Game(){}
 
 void Game::Update(){
-    m_renderTimer.Update();
-    m_mainWindow.Update();
-    m_event.Update(&m_bus);
-    m_draw.drawMap(&m_bus);
-
-
-    sf::Texture* texture;
-    texture = m_bus.s_texMan->requestTexture("char1");
-    sf::Sprite char1Sprite;
-    char1Sprite.setTexture(*texture);
-    char1Sprite.setPosition(100.0, 200.0);
-    m_bus.s_mainWindow->draw(char1Sprite);
-
-    m_draw.drawCharacter(&m_bus);
-
-
-
+    m_renderTimer.Update(); // gets new time
+    m_mainWindow.Update();  // does nothing
+    m_event.Update(&m_bus); // reads inputs // game logic layer between input and result.
+    m_draw.drawMap(&m_bus); // should raw appropriate map
+    m_draw.drawCharacter("Seras Victoria", &m_bus); // draw characters from list
 
 }
 

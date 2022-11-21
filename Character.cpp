@@ -73,30 +73,103 @@ int Character::GetArrSize(){
     return array_size;
 }
 
+int Character::GetArrPos(const std::string l_charName){
+    for(int i = 0; i < array_size; i++){
+        if(charactersArr[i].charName == l_charName){
+            return i;
+        }
+    }
+    return -1;
+}
+
 const std::string Character::GetCharName(int index){
-    if(index > array_size){ return 0;}
+    if(!IsIndex(index)){ return "loadFailed";}
     return charactersArr[index].charName;
 }
 
 const std::string Character::GetTexName(int index){
-    if(index > array_size){ return 0;}
+    if(!IsIndex(index)){ return "loadFailed";} // log error
     return charactersArr[index].texName;
 }
 
 sf::Texture* Character::GetTexturePointer(int index){
-    if(index > array_size){ return 0;}
+    if(!IsIndex(index)){ return charactersArr[0].texture;} // log error
     return charactersArr[index].texture;
 }
 
 int Character::GetPosx(int index){
-    if(index > array_size){ return 0;}
+    if(!IsIndex(index)){ return -1;}
     return charactersArr[index].posx;
 }
 
 int Character::GetPosy(int index){
-    if(index > array_size){ return 0;}
+    if(!IsIndex(index)){ return -1;}
     return charactersArr[index].posy;
 }
 
 
+void Character::SetPosx(int index, float x){
+    if(!IsIndex(index)){ return;}
+    charactersArr[index].posx = x;
+}
 
+void Character::SetPosy(int index, float y){
+    if(!IsIndex(index)){ return;}
+    charactersArr[index].posy = y;
+}
+
+bool Character::IsIndex(int index){
+    if( (index < 0 ) || (index >= array_size) ){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+
+void Character::MoveUp(const std::string charName){
+    // need logic on movement here.
+    // I think the logic should be in another class
+    // and then only call this one if it works out.
+    for(int i = 0; i < array_size; i++){
+        if(charactersArr[i].charName == charName){
+//            std::cout << "before: (MOVEUP())" << charactersArr[i].posy << std::endl;
+            charactersArr[i].posy--;
+//            std::cout << "moved down (MOVEUP())" << charactersArr[i].posy << std::endl;
+            break;
+        }
+    }
+}
+
+void Character::MoveDown(const std::string charName){
+    for(int i = 0; i < array_size; i++){
+        if(charactersArr[i].charName == charName){
+//            std::cout << "before: (MOVEUP())" << charactersArr[i].posy << std::endl;
+            charactersArr[i].posy++;
+//            std::cout << "moved down (MOVEUP())" << charactersArr[i].posy << std::endl;
+            break;
+        }
+    }
+}
+
+void Character::MoveLeft(const std::string charName){
+    for(int i = 0; i < array_size; i++){
+        if(charactersArr[i].charName == charName){
+//            std::cout << "before: (MOVEUP())" << charactersArr[i].posy << std::endl;
+            charactersArr[i].posx--;
+//            std::cout << "moved down (MOVEUP())" << charactersArr[i].posy << std::endl;
+            break;
+        }
+    }
+}
+
+void Character::MoveRight(const std::string charName){
+    for(int i = 0; i < array_size; i++){
+        if(charactersArr[i].charName == charName){
+//            std::cout << "before: (MOVEUP())" << charactersArr[i].posy << std::endl;
+            charactersArr[i].posx++;
+//            std::cout << "moved down (MOVEUP())" << charactersArr[i].posy << std::endl;
+            break;
+        }
+    }
+}

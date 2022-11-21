@@ -61,32 +61,51 @@ void Draw::drawMap(Bus* m_bus){
 }
 
 
-void Draw::drawCharacter(Bus* m_bus){
+void Draw::drawCharacter(const std::string drawThisChar, Bus* m_bus){
 
     // Who chooses which characters should be drawn?
     // Who assigns the characters their textures?
     // Who chooses character's default location?
 
     int array_size = m_bus->s_character->GetArrSize();
+    if(array_size == 0){ return;}
 
-    // Hardcoded for test.
-    std::string drawThisChar = "Seras Victoria";
+//    // Hardcoded for test.
+//    std::string drawThisChar = "Seras Victoria";
 
     // Here we find the corresponding name and texture but
     // hardcode the texturerequest which should be done elsewhere.
     // Maybe even just in another function that is called first.
     for(int i = 0; i < array_size; i++){
         if(drawThisChar == m_bus->s_character->GetCharName(i)){
-            std::cout << "Gettexname: " << m_bus->s_character->GetTexName(i) << std::endl;
+//            std::cout << "Gettexname: " << m_bus->s_character->GetTexName(i) << std::endl;
             sf::Texture* char1 = m_bus->s_texMan->requestTexture(m_bus->s_character->GetTexName(i));
-            sf::Sprite serasVictoriaSprite;
-            serasVictoriaSprite.setTexture(*char1); // I can check if nullptr here
-            m_bus->s_mainWindow->draw(serasVictoriaSprite);
+            if(char1 == nullptr){ return;} // log failure here
+            int posx = m_bus->s_character->GetPosx(i);
+            int posy = m_bus->s_character->GetPosy(i);
+            sf::Sprite sprite;
+            sprite.setTexture(*char1);
+            sprite.setPosition(pos2Orig(posx, posy, m_bus));
+            m_bus->s_mainWindow->draw(sprite);
             break;
         }
     }
-
 }
+
+
+sf::Vector2f Draw::pos2Orig(int posx, int posy, Bus* m_bus){
+    double windowLength = 800;
+    double windowHeight = 600;
+    int mapLength = m_bus->s_map->GetTileLength();
+    int mapHeight = m_bus->s_map->GetTileHeight();
+    float tileLength = windowLength / (double)mapLength;
+    float tileHeight = windowHeight / (double)mapHeight;
+    float xOrigin = tileLength * posx;
+    float yOrigin = tileHeight * posy;
+    sf::Vector2f windowCoordinates = sf::Vector2f(xOrigin, yOrigin);
+    return windowCoordinates;
+}
+
 
 
 

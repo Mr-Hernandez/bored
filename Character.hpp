@@ -15,8 +15,11 @@ public:
     Character();
     ~Character();
 
+    bool IsIndex(int index);
+
     //GETTERS
     int GetArrSize();
+    int GetArrPos(const std::string l_charName);
     int GetStat(int index);
     int GetPosx(int index);
     int GetPosy(int index);
@@ -26,6 +29,14 @@ public:
 
     //SETTERS
 //    sf::Texture* SetTexturePointer(int index);
+    void SetPosx(int index, float x);
+    void SetPosy(int index, float y);
+
+    //GAME LOGIC
+    void MoveUp(const std::string charName);
+    void MoveDown(const std::string charName);
+    void MoveLeft(const std::string charName);
+    void MoveRight(const std::string charName);
 
 private:
     struct Characters{
