@@ -4,3 +4,4 @@ dirtTile|D:\Programming\C++\Projects\codebloks\bored\assets\textures\mapTextures
 char1|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\char1.png
 SerasVictoria|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\SerasVictoria.png
 SonGoku|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\SonGoku.png
+Cursor1|D:\Programming\C++\Projects\codebloks\bored\assets\textures\miscTextures\Cursor1.png

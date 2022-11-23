@@ -7,6 +7,7 @@
 #include "Map.hpp"
 #include "TextureManager.hpp"
 #include "Character.hpp"
+#include "Cursor.hpp"
 
 
 struct Bus{
@@ -16,6 +17,7 @@ struct Bus{
     Map* s_map = nullptr;
     TextureManager* s_texMan = nullptr;
     Character* s_character = nullptr;
+    Cursor* s_cursor = nullptr;
 
 };
 

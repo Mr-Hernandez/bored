@@ -8,6 +8,7 @@
 #include "Draw.hpp"
 #include "TextureManager.hpp"
 #include "Character.hpp"
+#include "Cursor.hpp"
 
 class Game{
 
@@ -29,6 +30,9 @@ public:
 
 
 private:
+    unsigned int m_winH;
+    unsigned int m_winW;
+
     Window m_mainWindow;
     Timer m_renderTimer;
     Map m_map;
@@ -38,5 +42,6 @@ private:
     Draw m_draw;
     TextureManager m_texMan;
     Character m_character;
+    Cursor m_cursor;
 
 };

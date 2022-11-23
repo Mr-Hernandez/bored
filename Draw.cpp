@@ -15,7 +15,7 @@ void Draw::drawMap(Bus* m_bus){
     int mapLength = m_bus->s_map->GetTileLength();
     int mapHeight = m_bus->s_map->GetTileHeight();
     double windowLength = 800;
-    double windowHeight = 600;
+    double windowHeight = 800;
     int NoOfTiles = mapLength * mapHeight;
     double tileLength = windowLength / (double)mapLength;
     double tileHeight = windowHeight / (double)mapHeight;
@@ -93,9 +93,21 @@ void Draw::drawCharacter(const std::string drawThisChar, Bus* m_bus){
 }
 
 
+void Draw::drawCursor(Bus* m_bus){
+    sf::Texture* pCursorTexture = m_bus->s_texMan->requestTexture(m_bus->s_cursor->GetTexName());
+    if(pCursorTexture == nullptr){ std::cout << "drawCursor Error\n"; return;} // log error
+    int posx = m_bus->s_cursor->GetPosx();
+    int posy = m_bus->s_cursor->GetPosy();
+    sf::Sprite cursorSprite;
+    cursorSprite.setTexture(*pCursorTexture);
+    cursorSprite.setPosition(pos2Orig(posx, posy, m_bus));
+    m_bus->s_mainWindow->draw(cursorSprite);
+}
+
+
 sf::Vector2f Draw::pos2Orig(int posx, int posy, Bus* m_bus){
     double windowLength = 800;
-    double windowHeight = 600;
+    double windowHeight = 800;
     int mapLength = m_bus->s_map->GetTileLength();
     int mapHeight = m_bus->s_map->GetTileHeight();
     float tileLength = windowLength / (double)mapLength;

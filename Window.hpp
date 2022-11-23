@@ -9,6 +9,7 @@ class Window{
 
 public:
     Window();
+    Window(unsigned int l_winH, unsigned int l_winW);
     ~Window();
 
     void Update();
@@ -16,6 +17,7 @@ public:
     sf::RenderWindow* getWindow();
 
 private:
+//    int winH, winW;
     sf::RenderWindow m_mainWindow;
     SpriteDraw m_SpriteDraw;
 

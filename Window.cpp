@@ -1,7 +1,11 @@
 #include "Window.hpp"
 
 
-Window::Window() : m_mainWindow(sf::VideoMode(800, 600), "SFML window"){
+Window::Window() : m_mainWindow(sf::VideoMode(800, 800), "SFML window"){
+
+}
+
+Window::Window(unsigned int l_winH, unsigned int l_winW) : m_mainWindow(sf::VideoMode(l_winH, l_winW), "SFML window2"){
 
 }
 
