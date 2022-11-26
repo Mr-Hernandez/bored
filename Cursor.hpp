@@ -12,6 +12,11 @@ public:
     int GetPosy();
     std::string GetTexName();
 
+    void MoveUp();
+    void MoveDown();
+    void MoveLeft();
+    void MoveRight();
+
 private:
     int posx;
     int posy;

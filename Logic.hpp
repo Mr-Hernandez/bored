@@ -9,10 +9,16 @@ public:
     Logic(Bus* l_bus);
     ~Logic();
     //Game State Logic
-    bool CanMoveUp(int index);
-    bool CanMoveDown(int index);
-    bool CanMoveLeft(int index);
-    bool CanMoveRight(int index);
+    bool CharCanMoveUp(int index);
+    bool CharCanMoveDown(int index);
+    bool CharCanMoveLeft(int index);
+    bool CharCanMoveRight(int index);
+
+    bool CursorCanMoveUp(int posx, int posy);
+    bool CursorCanMoveDown(int posx, int posy);
+    bool CursorCanMoveLeft(int posx, int posy);
+    bool CursorCanMoveRight(int posx, int posy);
+
 
 
 private:

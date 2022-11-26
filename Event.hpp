@@ -30,7 +30,11 @@ private:
         TouchMoved, TouchEnded, SensorChanged, Count
     };
 
+    enum StateType{
+        CursorState, CharState
+    };
 
+    StateType l_state;
 
 };
 #endif // EVENT_H

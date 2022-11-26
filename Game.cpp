@@ -20,6 +20,13 @@ void Game::Update(){
     m_draw.drawCharacter("Seras Victoria", &m_bus); // draw characters from list
     m_draw.drawCursor(&m_bus);
 
+    sf::Texture* pTexture;
+    pTexture = m_texMan.requestTexture("fireTile");
+    sf::Sprite sprite;
+    sprite.setTexture(*pTexture);
+    sprite.setPosition(425, 425);
+    m_mainWindow.getWindow()->draw(sprite);
+
 }
 
 void Game::Render(){

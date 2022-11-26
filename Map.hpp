@@ -41,7 +41,7 @@ private:
     void m_setMap();
 
     // Tools
-    int m_pos2array(int posx, int posy);
+    int m_pos2array(int posx, int posy); //return index for a tile in tile array
 
     // remember to deallocate when setting up new map.
 public: m_TileDef* mapTileArr;

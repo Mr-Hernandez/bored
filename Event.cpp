@@ -1,7 +1,7 @@
 #include "Event.hpp"
 
 Event::Event(){
-
+    l_state = CursorState;
 }
 
 Event::~Event(){
@@ -48,43 +48,82 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
         std::cout << "shift pressed?: " << event.key.shift << std::endl;
         std::cout << "system pressed?: " << event.key.system << std::endl;
 
-        if(event.key.code == sf::Keyboard::W){
-            // Hardcoded for test.
-            std::string charName = "Seras Victoria";
-            // charName should be chosen by cursor action. I want a single point of entry
-            // something like currentcharName or activecharName, or chosencharName.
-            int index = m_bus->s_character->GetArrPos(charName);
-            if(logic.CanMoveUp(index)){
-                m_bus->s_character->MoveUp(charName);
+        if(l_state == CursorState){
+            if(event.key.code == sf::Keyboard::W){
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveUp(posx, posy)){
+                    m_bus->s_cursor->MoveUp();
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::S){
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveDown(posx, posy)){
+                    m_bus->s_cursor->MoveDown();
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::A){
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveLeft(posx, posy)){
+                    m_bus->s_cursor->MoveLeft();
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::D){
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveRight(posx, posy)){
+                    m_bus->s_cursor->MoveRight();
+                }
             }
         }
 
-        if(event.key.code == sf::Keyboard::S){
-            // Hardcoded for test.
-            std::string charName = "Seras Victoria";
-            int index = m_bus->s_character->GetArrPos(charName);
-            if(logic.CanMoveDown(index)){
-                m_bus->s_character->MoveDown(charName);
+
+        if(l_state == CharState){
+
+            if(event.key.code == sf::Keyboard::W){
+                // Hardcoded for test.
+                std::string charName = "Seras Victoria";
+                // charName should be chosen by cursor action. I want a single point of entry
+                // something like currentcharName or activecharName, or chosencharName.
+                int index = m_bus->s_character->GetArrPos(charName);
+                if(logic.CharCanMoveUp(index)){
+                    m_bus->s_character->MoveUp(charName);
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::S){
+                // Hardcoded for test.
+                std::string charName = "Seras Victoria";
+                int index = m_bus->s_character->GetArrPos(charName);
+                if(logic.CharCanMoveDown(index)){
+                    m_bus->s_character->MoveDown(charName);
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::A){
+                // Hardcoded for test.
+                std::string charName = "Seras Victoria";
+                int index = m_bus->s_character->GetArrPos(charName);
+                if(logic.CharCanMoveLeft(index)){
+                    m_bus->s_character->MoveLeft(charName);
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::D){
+                // Hardcoded for test.
+                std::string charName = "Seras Victoria";
+                int index = m_bus->s_character->GetArrPos(charName);
+                if(logic.CharCanMoveRight(index)){
+                    m_bus->s_character->MoveRight(charName);
+                }
             }
         }
 
-        if(event.key.code == sf::Keyboard::A){
-            // Hardcoded for test.
-            std::string charName = "Seras Victoria";
-            int index = m_bus->s_character->GetArrPos(charName);
-            if(logic.CanMoveLeft(index)){
-                m_bus->s_character->MoveLeft(charName);
-            }
-        }
-
-        if(event.key.code == sf::Keyboard::D){
-            // Hardcoded for test.
-            std::string charName = "Seras Victoria";
-            int index = m_bus->s_character->GetArrPos(charName);
-            if(logic.CanMoveRight(index)){
-                m_bus->s_character->MoveRight(charName);
-            }
-        }
     }
 }
 

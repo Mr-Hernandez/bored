@@ -12,15 +12,15 @@ Logic::~Logic(){
 
 // Game State Logic
 
-bool Logic::CanMoveUp(int index){
+bool Logic::CharCanMoveUp(int index){
     int posx = m_bus->s_character->GetPosx(index);
     int posy = m_bus->s_character->GetPosy(index);
     if(posx == -1 || posy == -1){ // -1 means
         //log error
         return false;
     }
-    int mapBoundx = m_bus->s_map->GetTileLength();
-    int mapBoundy = m_bus->s_map->GetTileHeight();
+//    int mapBoundx = m_bus->s_map->GetTileLength();
+//    int mapBoundy = m_bus->s_map->GetTileHeight();
 
     // add a check for tile type later.
     if(posy == 0){
@@ -30,14 +30,14 @@ bool Logic::CanMoveUp(int index){
     }
 }
 
-bool Logic::CanMoveDown(int index){
+bool Logic::CharCanMoveDown(int index){
     int posx = m_bus->s_character->GetPosx(index);
     int posy = m_bus->s_character->GetPosy(index);
     if(posx == -1 || posy == -1){ // -1 means
         //log error
         return false;
     }
-    int mapBoundx = m_bus->s_map->GetTileLength();
+//    int mapBoundx = m_bus->s_map->GetTileLength();
     int mapBoundy = m_bus->s_map->GetTileHeight();
 
     // add a check for tile type later.
@@ -48,15 +48,15 @@ bool Logic::CanMoveDown(int index){
     }
 }
 
-bool Logic::CanMoveLeft(int index){
+bool Logic::CharCanMoveLeft(int index){
     int posx = m_bus->s_character->GetPosx(index);
     int posy = m_bus->s_character->GetPosy(index);
     if(posx == -1 || posy == -1){ // -1 means
         //log error
         return false;
     }
-    int mapBoundx = m_bus->s_map->GetTileLength();
-    int mapBoundy = m_bus->s_map->GetTileHeight();
+//    int mapBoundx = m_bus->s_map->GetTileLength();
+//    int mapBoundy = m_bus->s_map->GetTileHeight();
 
     // add a check for tile type later.
     if(posx == 0){
@@ -66,7 +66,7 @@ bool Logic::CanMoveLeft(int index){
     }
 }
 
-bool Logic::CanMoveRight(int index){
+bool Logic::CharCanMoveRight(int index){
     int posx = m_bus->s_character->GetPosx(index);
     int posy = m_bus->s_character->GetPosy(index);
     if(posx == -1 || posy == -1){ // -1 means
@@ -74,7 +74,7 @@ bool Logic::CanMoveRight(int index){
         return false;
     }
     int mapBoundx = m_bus->s_map->GetTileLength();
-    int mapBoundy = m_bus->s_map->GetTileHeight();
+//    int mapBoundy = m_bus->s_map->GetTileHeight();
 
     // add a check for tile type later.
     if(posx == mapBoundx - 1){
@@ -82,4 +82,26 @@ bool Logic::CanMoveRight(int index){
     }else{
         return true;
     }
+}
+
+
+bool Logic::CursorCanMoveUp(int posx, int posy){
+    return true; //logic currently just in Cursor.cpp
+}
+
+bool Logic::CursorCanMoveDown(int posx, int posy){
+    int mapBoundy = m_bus->s_map->GetTileHeight();
+    if(posy >= mapBoundy - 1){ return false;}
+    std::cout << posy << ":" << mapBoundy << std::endl;
+    return true;
+}
+
+bool Logic::CursorCanMoveLeft(int posx, int posy){
+    return true; //logic currently just in Cursor.cpp
+}
+
+bool Logic::CursorCanMoveRight(int posx, int posy){
+    int mapBoundx = m_bus->s_map->GetTileLength();
+    if(posx >= mapBoundx - 1){ return false;}
+    return true;
 }
