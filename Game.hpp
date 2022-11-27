@@ -9,6 +9,7 @@
 #include "TextureManager.hpp"
 #include "Character.hpp"
 #include "Cursor.hpp"
+#include "Viewer.hpp"
 
 class Game{
 
@@ -30,8 +31,8 @@ public:
 
 
 private:
-    unsigned int m_winH;
-    unsigned int m_winW;
+    int m_winH;
+    int m_winW;
 
     Window m_mainWindow;
     Timer m_renderTimer;
@@ -43,5 +44,7 @@ private:
     TextureManager m_texMan;
     Character m_character;
     Cursor m_cursor;
+//    sf::View m_view;
+    Viewer m_viewer;
 
 };

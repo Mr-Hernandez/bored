@@ -7,6 +7,7 @@
 class Draw{
 public:
     Draw();
+    Draw(int l_winH, int l_winW);
     ~Draw();
 
     void drawMap(Bus* m_bus);
@@ -15,6 +16,7 @@ public:
 
 private:
     sf::Vector2f pos2Orig(int posx, int posy, Bus* m_bus);
+    int m_winH, m_winW;
 };
 
 #endif // DRAW_H

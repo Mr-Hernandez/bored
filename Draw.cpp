@@ -5,6 +5,10 @@ Draw::Draw(){
 
 }
 
+Draw::Draw(int l_winH, int l_winW) : m_winH(l_winH), m_winW(l_winW){
+
+}
+
 
 Draw::~Draw(){
 
@@ -14,11 +18,14 @@ Draw::~Draw(){
 void Draw::drawMap(Bus* m_bus){
     int mapLength = m_bus->s_map->GetTileLength();
     int mapHeight = m_bus->s_map->GetTileHeight();
-    double windowLength = 800;
-    double windowHeight = 800;
-    int NoOfTiles = mapLength * mapHeight;
+//    double windowLength = 800;
+//    double windowHeight = 800;
+    double windowLength = (double)m_winW;
+    double windowHeight = (double)m_winH;
+//    int NoOfTiles = mapLength * mapHeight;
     double tileLength = windowLength / (double)mapLength;
     double tileHeight = windowHeight / (double)mapHeight;
+//    std::cout << "windowLength: " << windowLength << "|mapLength: " << mapLength << std::endl;
 
     static bool g = true;
     m_bus->s_texMan->printTextureCount();
@@ -39,18 +46,23 @@ void Draw::drawMap(Bus* m_bus){
 
     for(int y = 0; y < mapHeight; y++){
         for(int x = 0; x < mapLength; x++){
-            int index = y * mapLength + x;
-            int windowX, windowY;
+//            int index = y * mapLength + x;
+//            int windowX, windowY;
             double xOrigin = tileLength * x;
             double yOrigin = tileHeight * y;
+            xOrigin = 128 * x;
+            yOrigin = 128 * y; // hardcode test
+//            std::cout << "x: " << xOrigin << "|y: " << yOrigin << std::endl;
 
             char tileType = m_bus->s_map->GetTileType(x, y);
 
             // spritecreation here
-            fireSprite.setTextureRect(sf::IntRect(12, 50, tileLength, tileHeight));
+//            fireSprite.setTextureRect(sf::IntRect(12, 50, tileLength, tileHeight));
 
-            fireSprite.setPosition(xOrigin, yOrigin);
-            grassSprite.setPosition(xOrigin, yOrigin);
+//            fireSprite.setPosition(xOrigin, yOrigin);
+//            grassSprite.setPosition(xOrigin, yOrigin);
+            fireSprite.setPosition(pos2Orig(x, y, m_bus));
+            grassSprite.setPosition(pos2Orig(x, y, m_bus));
             if(tileType == '0'){
                 m_bus->s_mainWindow->draw(fireSprite);
             }else if(tileType == '1'){
@@ -106,14 +118,20 @@ void Draw::drawCursor(Bus* m_bus){
 
 
 sf::Vector2f Draw::pos2Orig(int posx, int posy, Bus* m_bus){
-    double windowLength = 800;
-    double windowHeight = 800;
+//    double windowLength = 800;
+//    double windowHeight = 800;
+    float pxWidth = 128;
+    float pxHeight = 128;
+    double windowLength = (double)m_winW;
+    double windowHeight = (double)m_winH;
     int mapLength = m_bus->s_map->GetTileLength();
     int mapHeight = m_bus->s_map->GetTileHeight();
     float tileLength = windowLength / (double)mapLength;
     float tileHeight = windowHeight / (double)mapHeight;
-    float xOrigin = tileLength * posx;
-    float yOrigin = tileHeight * posy;
+//    float xOrigin = tileLength * posx;
+//    float yOrigin = tileHeight * posy;
+    float xOrigin = pxWidth * posx;
+    float yOrigin = pxHeight * posy;
     sf::Vector2f windowCoordinates = sf::Vector2f(xOrigin, yOrigin);
     return windowCoordinates;
 }

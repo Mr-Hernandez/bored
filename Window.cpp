@@ -5,8 +5,8 @@ Window::Window() : m_mainWindow(sf::VideoMode(800, 800), "SFML window"){
 
 }
 
-Window::Window(unsigned int l_winH, unsigned int l_winW) : m_mainWindow(sf::VideoMode(l_winH, l_winW), "SFML window2"){
-
+Window::Window(int l_winH, int l_winW) : m_mainWindow(sf::VideoMode(l_winW, l_winH), "SFML window2"){
+    std::cout << "Window Constructor 2" << std::endl;
 }
 
 Window::~Window(){
