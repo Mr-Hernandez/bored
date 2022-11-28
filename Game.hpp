@@ -10,6 +10,7 @@
 #include "Character.hpp"
 #include "Cursor.hpp"
 #include "Viewer.hpp"
+#include "Pathfinder.hpp"
 
 class Game{
 
@@ -46,5 +47,6 @@ private:
     Cursor m_cursor;
 //    sf::View m_view;
     Viewer m_viewer;
+    Pathfinder m_pathFinder;
 
 };

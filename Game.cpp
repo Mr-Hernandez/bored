@@ -28,6 +28,7 @@ void Game::Update(){
     m_draw.drawMap(&m_bus); // should draw appropriate map
     m_draw.drawCharacter("Seras Victoria", &m_bus); // draw characters from list
     m_draw.drawCursor(&m_bus);
+    m_draw.drawPath(&m_bus);
     m_viewer.SetCenter(sf::Vector2f(m_cursor.GetPosx() * 128, m_cursor.GetPosy() * 128));
 
 
@@ -60,5 +61,6 @@ void Game::init_bus(){
     m_bus.s_texMan = &m_texMan;
     m_bus.s_character = &m_character;
     m_bus.s_cursor = &m_cursor;
+    m_bus.s_pathFinder = &m_pathFinder;
 }
 

@@ -8,6 +8,7 @@
 #include "TextureManager.hpp"
 #include "Character.hpp"
 #include "Cursor.hpp"
+#include "Pathfinder.hpp"
 
 
 struct Bus{
@@ -18,6 +19,7 @@ struct Bus{
     TextureManager* s_texMan = nullptr;
     Character* s_character = nullptr;
     Cursor* s_cursor = nullptr;
+    Pathfinder* s_pathFinder = nullptr;
 
 };
 

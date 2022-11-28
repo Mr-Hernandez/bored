@@ -80,10 +80,24 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                     m_bus->s_cursor->MoveRight();
                 }
             }
+
+            // if character a pressed on character
+            if(event.key.code == sf::Keyboard::Enter){
+                std::cout << "Mouse Left Click" << std::endl;
+                if(logic.CanSelectChar()){
+                    // set some thing to tie character pos to cursor pos
+                    l_state = PathState;
+                    m_bus->s_pathFinder->ClearPath();
+                    if(m_bus->s_pathFinder->GetContainerSize()){ std::cout << "empty" << std::endl;}
+                    int posx = m_bus->s_cursor->GetPosx();
+                    int posy = m_bus->s_cursor->GetPosy();
+                    m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
+                }
+            }
         }
 
 
-        if(l_state == CharState){
+        else if(l_state == CharState){
 
             if(event.key.code == sf::Keyboard::W){
                 // Hardcoded for test.
@@ -94,6 +108,13 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 if(logic.CharCanMoveUp(index)){
                     m_bus->s_character->MoveUp(charName);
                 }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveUp(posx, posy)){
+                    m_bus->s_cursor->MoveUp();
+                }
             }
 
             if(event.key.code == sf::Keyboard::S){
@@ -102,6 +123,13 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 int index = m_bus->s_character->GetArrPos(charName);
                 if(logic.CharCanMoveDown(index)){
                     m_bus->s_character->MoveDown(charName);
+                }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveDown(posx, posy)){
+                    m_bus->s_cursor->MoveDown();
                 }
             }
 
@@ -112,6 +140,13 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 if(logic.CharCanMoveLeft(index)){
                     m_bus->s_character->MoveLeft(charName);
                 }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveLeft(posx, posy)){
+                    m_bus->s_cursor->MoveLeft();
+                }
             }
 
             if(event.key.code == sf::Keyboard::D){
@@ -121,6 +156,108 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 if(logic.CharCanMoveRight(index)){
                     m_bus->s_character->MoveRight(charName);
                 }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveRight(posx, posy)){
+                    m_bus->s_cursor->MoveRight();
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::Enter){
+                std::cout << "CharState: Enter was pressed" << std::endl;
+                l_state = CursorState;
+            }
+        }
+
+        else if(l_state == PathState){
+
+            if(event.key.code == sf::Keyboard::W){
+//                // Hardcoded for test.
+//                std::string charName = "Seras Victoria";
+//                // charName should be chosen by cursor action. I want a single point of entry
+//                // something like currentcharName or activecharName, or chosencharName.
+//                int index = m_bus->s_character->GetArrPos(charName);
+//                if(logic.CharCanMoveUp(index)){
+//                    m_bus->s_character->MoveUp(charName);
+//                }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveUp(posx, posy)){
+                    m_bus->s_cursor->MoveUp();
+                    // PathMemory
+                    int posx = m_bus->s_cursor->GetPosx();
+                    int posy = m_bus->s_cursor->GetPosy();
+                    m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::S){
+                // Hardcoded for test.
+//                std::string charName = "Seras Victoria";
+//                int index = m_bus->s_character->GetArrPos(charName);
+//                if(logic.CharCanMoveDown(index)){
+//                    m_bus->s_character->MoveDown(charName);
+//                }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveDown(posx, posy)){
+                    m_bus->s_cursor->MoveDown();
+                    // PathMemory
+                    int posx = m_bus->s_cursor->GetPosx();
+                    int posy = m_bus->s_cursor->GetPosy();
+                    m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::A){
+//                // Hardcoded for test.
+//                std::string charName = "Seras Victoria";
+//                int index = m_bus->s_character->GetArrPos(charName);
+//                if(logic.CharCanMoveLeft(index)){
+//                    m_bus->s_character->MoveLeft(charName);
+//                }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveLeft(posx, posy)){
+                    m_bus->s_cursor->MoveLeft();
+                    // PathMemory
+                    int posx = m_bus->s_cursor->GetPosx();
+                    int posy = m_bus->s_cursor->GetPosy();
+                    m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::D){
+//                // Hardcoded for test.
+//                std::string charName = "Seras Victoria";
+//                int index = m_bus->s_character->GetArrPos(charName);
+//                if(logic.CharCanMoveRight(index)){
+//                    m_bus->s_character->MoveRight(charName);
+//                }
+
+                // cursor movement
+                int posx = m_bus->s_cursor->GetPosx();
+                int posy = m_bus->s_cursor->GetPosy();
+                if(logic.CursorCanMoveRight(posx, posy)){
+                    m_bus->s_cursor->MoveRight();
+                    // PathMemory
+                    int posx = m_bus->s_cursor->GetPosx();
+                    int posy = m_bus->s_cursor->GetPosy();
+                    m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
+                }
+            }
+
+            if(event.key.code == sf::Keyboard::Enter){
+//                std::cout << "CharState: Enter was pressed" << std::endl;
+//                l_state = CursorState;
             }
         }
 

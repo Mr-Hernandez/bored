@@ -31,7 +31,7 @@ private:
     };
 
     enum StateType{
-        CursorState, CharState
+        CursorState, CharState, PathState
     };
 
     StateType l_state;

@@ -26,6 +26,9 @@ public:
     const std::string GetCharName(int index);
     const std::string GetTexName(int index);
     sf::Texture* GetTexturePointer(int index);
+    int GetIndexFromPos(int posx, int posy);
+    int GetCurrentChar();
+    void SetCurrentChar(int currentCharacterIndex);
 
     //SETTERS
 //    sf::Texture* SetTexturePointer(int index);
@@ -57,9 +60,11 @@ private:
     };
 
     int array_size;
+    int currentCharacter;
     Characters charactersArr[NO_OF_CHARACTERS];
 
     void loadCharactersList();
+
 
 
 };

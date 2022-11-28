@@ -105,3 +105,15 @@ bool Logic::CursorCanMoveRight(int posx, int posy){
     if(posx >= mapBoundx - 1){ return false;}
     return true;
 }
+
+
+bool Logic::CanSelectChar(){
+    sf::Vector2i cursorPos;
+    sf::Vector2i charPos;
+
+    cursorPos = sf::Vector2i(m_bus->s_cursor->GetPosx(), m_bus->s_cursor->GetPosy());
+    int index = m_bus->s_character->GetIndexFromPos(cursorPos.x, cursorPos.y);
+    if(index < 0){ return false;}
+    m_bus->s_character->SetCurrentChar(index);
+    return true;
+}

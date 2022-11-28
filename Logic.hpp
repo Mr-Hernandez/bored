@@ -19,6 +19,7 @@ public:
     bool CursorCanMoveLeft(int posx, int posy);
     bool CursorCanMoveRight(int posx, int posy);
 
+    bool CanSelectChar();
 
 
 private:

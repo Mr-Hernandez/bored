@@ -117,6 +117,43 @@ void Draw::drawCursor(Bus* m_bus){
 }
 
 
+void Draw::drawPath(Bus* m_bus){
+    int pathConSize = m_bus->s_pathFinder->GetContainerSize();
+//    std::cout << "Pos Container Size: " << pathConSize << std::endl;
+    if(pathConSize <= 1){ return;}
+
+    sf::Texture* pPathVertical, *pPathHorizontal, *pPathArrow;
+    pPathVertical = m_bus->s_texMan->requestTexture("pathLine");
+    pPathHorizontal = m_bus->s_texMan->requestTexture("pathLine");
+    pPathArrow = m_bus->s_texMan->requestTexture("pathArrow");
+    if(pPathArrow == nullptr || pPathVertical == nullptr || pPathHorizontal == nullptr){ return;} // log error
+    sf::Sprite vertSprite, horizSprite, arrowSprite;
+    vertSprite.setTexture(*pPathVertical);
+    horizSprite.setTexture(*pPathHorizontal);
+    arrowSprite.setTexture(*pPathArrow);
+
+    bool firstFlag = true;
+    for(int i = pathConSize; i > 0; i--){
+        // next
+        sf::Vector2i current = m_bus->s_pathFinder->GetPos(i);
+        sf::Vector2i previous = m_bus->s_pathFinder->GetPos(i-1);
+//        m_bus->s_pathFinder->PrintPath();
+        if(firstFlag){
+            // logic for direction of arrow
+            arrowSprite.setPosition(pos2Orig(current.x, current.y, m_bus));
+            m_bus->s_mainWindow->draw(arrowSprite);
+            firstFlag = false;
+        }else if(current.x != previous.x){
+            horizSprite.setPosition(pos2Orig(current.x, current.y, m_bus));
+            m_bus->s_mainWindow->draw(horizSprite);
+        }else if(current.y != previous.y){
+            vertSprite.setPosition(pos2Orig(current.x, current.y, m_bus));
+            m_bus->s_mainWindow->draw(vertSprite);
+        }
+    }
+}
+
+
 sf::Vector2f Draw::pos2Orig(int posx, int posy, Bus* m_bus){
 //    double windowLength = 800;
 //    double windowHeight = 800;

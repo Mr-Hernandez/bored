@@ -173,3 +173,24 @@ void Character::MoveRight(const std::string charName){
         }
     }
 }
+
+
+
+int Character::GetIndexFromPos(int posx, int posy){
+    for(int i = 0; i < array_size; i++){
+        if(charactersArr[i].posx == posx && charactersArr[i].posy == posy){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int Character::GetCurrentChar(){
+    return currentCharacter;
+}
+
+void Character::SetCurrentChar(int currentCharacterIndex){
+    if(currentCharacterIndex < 0){ return;}
+    currentCharacter = currentCharacterIndex;
+}
+
