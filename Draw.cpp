@@ -135,12 +135,12 @@ void Draw::drawPath(Bus* m_bus){
     turnSprite.setTexture(*pPathTurn);
 
     bool firstFlag = true;
-    for(int i = pathConSize; i > 0; i--){
+    for(int i = pathConSize; i > 0; i--){ // pathconsize returns valid index value
         // next
         sf::Vector2i current = m_bus->s_pathFinder->GetPos(i);
         sf::Vector2i previous = m_bus->s_pathFinder->GetPos(i-1);
         sf::Vector2i previous2;
-        if(i >= 2){ previous2 = m_bus->s_pathFinder->GetPos(i-2);}
+        if(i >= 2 && i != pathConSize){ previous2 = m_bus->s_pathFinder->GetPos(i+1);}
         else{ previous2 = sf::Vector2i(-1,-1);}
 //        m_bus->s_pathFinder->PrintPath();
         if(firstFlag){
@@ -219,31 +219,31 @@ void Draw::pathRotator(sf::Vector2i current, sf::Vector2i previous, sf::Sprite* 
 void Draw::turnRotator(sf::Vector2i current, sf::Vector2i previous, sf::Vector2i previous2, sf::Sprite* sprite, Bus* m_bus){
     sf::Vector2f rotateOrigin = sf::Vector2f(64.f,64.f);
     sprite->setOrigin(rotateOrigin);
-    if((previous2.x < previous.x) && (previous2.x < current.x)){
+    if((previous.x < previous2.x) && (previous.x < current.x)){
         //config 1
         if(previous2.y < current.y){
-            //90 deg
-            sprite->setRotation(90.f);
-            sprite->setOrigin(normOrigin(90));
-        }else if(previous2.y > current.y){
             //180 deg
             sprite->setRotation(180.f);
             sprite->setOrigin(normOrigin(180));
+        }else if(previous2.y > current.y){
+            //90 deg
+            sprite->setRotation(90.f);
+            sprite->setOrigin(normOrigin(90));
         }
     }
-    if((previous2.x > previous.x) && (previous2.x > current.x)){
+    if((previous.x > previous2.x) && (previous.x > current.x)){
         // config 2
-        if(previous2.y < current.y){
+        if(previous2.y > current.y){
             //0 deg
             sprite->setRotation(0.f);
             sprite->setOrigin(normOrigin(0));
-        }else if(previous2.y > current.y){
+        }else if(previous2.y < current.y){
             //270 deg
             sprite->setRotation(270.f);
             sprite->setOrigin(normOrigin(270));
         }
     }
-    if((previous2.y < previous.y) && (previous2.y < current.y)){
+    if((previous.y < previous2.y) && (previous.y < current.y)){
         // config 3
         if(previous2.x < current.x){
             //180
@@ -255,7 +255,7 @@ void Draw::turnRotator(sf::Vector2i current, sf::Vector2i previous, sf::Vector2i
             sprite->setOrigin(normOrigin(270));
         }
     }
-    if((previous2.y > previous.y) && (previous2.y > current.y)){
+    if((previous.y > previous2.y) && (previous.y > current.y)){
         // config 4
         if(previous2.x < current.x){
             //90 deg
@@ -273,7 +273,7 @@ void Draw::turnRotator(sf::Vector2i current, sf::Vector2i previous, sf::Vector2i
 
 bool Draw::IsTurn(sf::Vector2i current, sf::Vector2i previous, sf::Vector2i previous2){
     if(previous2.x == -1 || previous2.y == -1){ return false;}
-    if((previous2.x != current.x) && (previous2.y != current.y)){ return true;}
+    if((previous2.x != previous.x) && (previous2.y != previous.y)){ return true;}
     return false;
 }
 
