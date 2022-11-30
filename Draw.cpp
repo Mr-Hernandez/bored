@@ -140,7 +140,7 @@ void Draw::drawPath(Bus* m_bus){
         sf::Vector2i current = m_bus->s_pathFinder->GetPos(i);
         sf::Vector2i previous = m_bus->s_pathFinder->GetPos(i-1);
         sf::Vector2i previous2;
-        if(i >= 2 && i != pathConSize){ previous2 = m_bus->s_pathFinder->GetPos(i+1);}
+        if(pathConSize >= 2 && i != pathConSize){ previous2 = m_bus->s_pathFinder->GetPos(i+1);}
         else{ previous2 = sf::Vector2i(-1,-1);}
 //        m_bus->s_pathFinder->PrintPath();
         if(firstFlag){

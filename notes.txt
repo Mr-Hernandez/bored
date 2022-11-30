@@ -26,3 +26,9 @@ and solving for correct array inside the class.
         -
     - (TURN-BASED) How would I implement turn based combat? First I want to be able to draw stuff to places, and such.
     - (MENU) It doesn't really feel like a game without adding a menu or something.
+
+
+11/29/2022
+- path draws extra lines when moving array into left or top of window, but this does not occur
+  on the right and bottom of the of the window. I remember using different logic in these places
+  so consider checking out cursor.cpp and the logic behind it's legal movements.

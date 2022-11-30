@@ -86,7 +86,9 @@ bool Logic::CharCanMoveRight(int index){
 
 
 bool Logic::CursorCanMoveUp(int posx, int posy){
-    return true; //logic currently just in Cursor.cpp
+    if(posy){ return true;}
+    else{ return false;}
+//    return true; //logic currently just in Cursor.cpp
 }
 
 bool Logic::CursorCanMoveDown(int posx, int posy){
@@ -97,7 +99,9 @@ bool Logic::CursorCanMoveDown(int posx, int posy){
 }
 
 bool Logic::CursorCanMoveLeft(int posx, int posy){
-    return true; //logic currently just in Cursor.cpp
+    if(posx){ return true;}
+    else{ return false;}
+//    return true; //logic currently just in Cursor.cpp
 }
 
 bool Logic::CursorCanMoveRight(int posx, int posy){
