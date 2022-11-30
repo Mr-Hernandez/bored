@@ -13,6 +13,7 @@ public:
     int GetContainerSize();
     sf::Vector2i GetPos(int index);
 
+
     void AddPathPos(sf::Vector2i pos);
     void ClearPath();
     void PrintPath();

@@ -17,6 +17,11 @@ public:
 
 private:
     sf::Vector2f pos2Orig(int posx, int posy, Bus* m_bus);
+    float degRotation(sf::Vector2i currentPos, sf::Vector2i previousPos);
+    void pathRotator(sf::Vector2i current, sf::Vector2i previous, sf::Sprite* sprite, Bus* m_bus);
+    void turnRotator(sf::Vector2i current, sf::Vector2i previous, sf::Vector2i previous2, sf::Sprite* sprite, Bus* m_bus);
+    bool IsTurn(sf::Vector2i current, sf::Vector2i previous, sf::Vector2i previous2);
+    sf::Vector2f normOrigin(int degreesTurned);
     int m_winH, m_winW;
 };
 
