@@ -5,8 +5,9 @@ char1|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\c
 SerasVictoria|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\SerasVictoria.png
 SonGoku|D:\Programming\C++\Projects\codebloks\bored\assets\textures\charTextures\SonGoku.png
 Cursor1|D:\Programming\C++\Projects\codebloks\bored\assets\textures\miscTextures\Cursor1.png
+pathTurn|D:\Programming\C++\Projects\codebloks\bored\assets\textures\miscTextures\pathTurn.png
 pathLine|D:\Programming\C++\Projects\codebloks\bored\assets\textures\miscTextures\pathLine.png
 pathArrow|D:\Programming\C++\Projects\codebloks\bored\assets\textures\miscTextures\pathArrow.png
-pathTurn|D:\Programming\C++\Projects\codebloks\bored\assets\textures\miscTextures\pathTurn.png
+
 
 

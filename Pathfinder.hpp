@@ -15,6 +15,7 @@ public:
 
 
     void AddPathPos(sf::Vector2i pos);
+    void CheckPathOverlap();
     void ClearPath();
     void PrintPath();
 

@@ -3,6 +3,7 @@
 
 Logic::Logic(Bus* l_bus){
     m_bus = l_bus;
+    m_movedThisFrame = false;
 }
 
 Logic::~Logic(){
@@ -121,3 +122,4 @@ bool Logic::CanSelectChar(){
     m_bus->s_character->SetCurrentChar(index);
     return true;
 }
+

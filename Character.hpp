@@ -65,6 +65,8 @@ private:
 
     void loadCharactersList();
 
+    //movement
+
 
 
 };

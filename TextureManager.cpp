@@ -11,6 +11,7 @@ TextureManager::~TextureManager(){
 }
 
 sf::Texture* TextureManager::requestTexture(const std::string& texName){
+    std::cout << "tman:requestTexture(): " << texName << std::endl;
     for(auto i = texInfo.begin(); i != texInfo.end(); ++i){
         // check if it exists
         // load if needed
@@ -33,6 +34,7 @@ sf::Texture* TextureManager::requestTexture(const std::string& texName){
 
 
 void TextureManager::loadList(){
+    std::cout << "tman:loadList()" << std::endl;
     std::ifstream texList;
     texList.open("D:/Programming/C++/Projects/codebloks/bored/assets/textures/texturesList.txt");
     std::string line;
@@ -72,7 +74,8 @@ void TextureManager::loadTexture(const std::string& l_path, std::forward_list<st
     texture.loadFromFile(l_path);
     texContainer.push_front(texture);
     i->second.second.first = texContainer.begin();
-
+    auto test = texContainer.begin();
+    ;
     // check if texture exists? already happened?
     // add texture to actual texture container
     // set pointer to this location
@@ -97,11 +100,13 @@ void TextureManager::printTextureCount(){
     for(auto i = texContainer.begin(); i != texContainer.end(); ++i){
         textureCount++;
     }
-//    std::cout << "TextureCount: " << textureCount << std::endl;
+    std::cout << "TextureCount: " << textureCount << std::endl;
 }
 
 
 void TextureManager::removeTexture(const std::string& texName){
+    std::cout << "tman:removeTexture()" << std::endl;
+
     if(texContainer.empty()){ return;}
 
     for(auto i = texInfo.begin(); i != texInfo.end(); ++i){ // iterator for texInfo
@@ -124,17 +129,30 @@ void TextureManager::removeTexture(const std::string& texName){
 
 
 void TextureManager::cleanTextures(){
+    std::cout << "tman:cleanTextures()" << std::endl;
+
     if(texContainer.empty()){ return;}
 
     for(auto i = texInfo.begin(); i != texInfo.end(); ++i){ // iterator for texInfo
 //        if(i->second.second.second == 0 || i->second.second.second == 1){
+
         if(i->second.second.second == 1){
             auto texContainerIterator = (i->second.second.first); // iterator for texcontainer
             auto prevIt = texContainer.begin();
             for(auto it = texContainer.begin(); it != texContainer.end(); ++it){
                 if(it == texContainerIterator){
                     std::cout << "removing texture: " << i->first << std::endl;
-                    texContainer.erase_after(prevIt);
+//                    if(i->second.second.first == texContainer.end()){
+//                        continue;
+//                    }
+                    if(it == texContainer.begin()){
+                        texContainer.pop_front();
+//                        i->second.second.first = texContainer.end();
+                    }else{
+                        texContainer.erase_after(prevIt);
+                        i->second.second.first = texContainer.end();
+                    }
+                    i->second.second.second = 0; // resets texture state to unloaded
                     break;
                 }else{
                     prevIt = it;

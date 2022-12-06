@@ -118,11 +118,25 @@ void Draw::drawCursor(Bus* m_bus){
 
 
 void Draw::drawPath(Bus* m_bus){
-    int pathConSize = m_bus->s_pathFinder->GetContainerSize();
-//    std::cout << "Pos Container Size: " << pathConSize << std::endl;
-    if(pathConSize <= 1){ return;}
+    m_bus->s_pathFinder->CheckPathOverlap();
 
-    sf::Texture* pPathVertical, *pPathHorizontal, *pPathArrow, *pPathTurn;
+//    sf::Texture* pPathVertical;
+//    sf::Texture* pPathHorizontal;
+//    sf::Texture* pPathArrow;
+//    sf::Texture* pPathTurn;
+//    pPathVertical = m_bus->s_texMan->requestTexture("pathLine");
+//    pPathHorizontal = m_bus->s_texMan->requestTexture("pathLine");
+//    pPathArrow = m_bus->s_texMan->requestTexture("pathArrow");
+//    pPathTurn = m_bus->s_texMan->requestTexture("pathTurn");
+
+    int pathConSize = m_bus->s_pathFinder->GetContainerSize();
+    std::cout << "drawPath() pathConSize: " << pathConSize << std::endl;
+    if(pathConSize <= 0){ return;}
+
+    sf::Texture* pPathVertical;
+    sf::Texture* pPathHorizontal;
+    sf::Texture* pPathArrow;
+    sf::Texture* pPathTurn;
     pPathVertical = m_bus->s_texMan->requestTexture("pathLine");
     pPathHorizontal = m_bus->s_texMan->requestTexture("pathLine");
     pPathArrow = m_bus->s_texMan->requestTexture("pathArrow");
@@ -140,7 +154,7 @@ void Draw::drawPath(Bus* m_bus){
         sf::Vector2i current = m_bus->s_pathFinder->GetPos(i);
         sf::Vector2i previous = m_bus->s_pathFinder->GetPos(i-1);
         sf::Vector2i previous2;
-        if(pathConSize >= 2 && i != pathConSize){ previous2 = m_bus->s_pathFinder->GetPos(i+1);}
+        if((pathConSize >= 2) && (i != pathConSize)){ previous2 = m_bus->s_pathFinder->GetPos(i+1);}
         else{ previous2 = sf::Vector2i(-1,-1);}
 //        m_bus->s_pathFinder->PrintPath();
         if(firstFlag){

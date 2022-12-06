@@ -7,7 +7,7 @@ Game::Game() : m_winW(1920),
                // add here whatever other objects need the screen size or add it to bus?
                // need a set size update?
     state = STATE_GAME;
-//    m_renderTimer.setFrameDisplay();
+    m_renderTimer.setFrameDisplay();
     init_bus();
     m_viewer.SetSize(2);
 //    m_viewer.SetCenter(sf::Vector2f(m_winW/2.f, 800.f));
@@ -43,9 +43,10 @@ void Game::Update(){
 
 void Game::Render(){
     if(m_renderTimer.getTick()){
-        m_texMan.cleanTextures();
+
         getWindow()->display();
         getWindow()->clear();
+        m_texMan.cleanTextures();
     }
 }
 

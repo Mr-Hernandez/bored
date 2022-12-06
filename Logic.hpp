@@ -25,6 +25,8 @@ public:
 private:
     Bus* m_bus;
 
+    bool m_movedThisFrame;
+
 };
 
 #endif // LOGIC_H

@@ -88,7 +88,7 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                     // set some thing to tie character pos to cursor pos
                     l_state = PathState;
                     m_bus->s_pathFinder->ClearPath();
-                    if(m_bus->s_pathFinder->GetContainerSize()){ std::cout << "empty" << std::endl;}
+                    if(m_bus->s_pathFinder->GetContainerSize() <= 0){ std::cout << "empty" << std::endl;}
                     int posx = m_bus->s_cursor->GetPosx();
                     int posy = m_bus->s_cursor->GetPosy();
                     m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
@@ -195,7 +195,7 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 }
             }
 
-            if(event.key.code == sf::Keyboard::S){
+            else if(event.key.code == sf::Keyboard::S){
                 // Hardcoded for test.
 //                std::string charName = "Seras Victoria";
 //                int index = m_bus->s_character->GetArrPos(charName);
@@ -215,7 +215,7 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 }
             }
 
-            if(event.key.code == sf::Keyboard::A){
+            else if(event.key.code == sf::Keyboard::A){
 //                // Hardcoded for test.
 //                std::string charName = "Seras Victoria";
 //                int index = m_bus->s_character->GetArrPos(charName);
@@ -235,7 +235,7 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                 }
             }
 
-            if(event.key.code == sf::Keyboard::D){
+            else if(event.key.code == sf::Keyboard::D){
 //                // Hardcoded for test.
 //                std::string charName = "Seras Victoria";
 //                int index = m_bus->s_character->GetArrPos(charName);
