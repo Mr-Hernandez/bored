@@ -61,3 +61,15 @@ void Pathfinder::CheckPathOverlap(){
     }
 }
 
+void Pathfinder::FindPath(sf::Vector2i startPos, sf::Vector2i targetPos){
+    std::pair<sf::Vector2i, bool [4]> finderType;
+    if(finderContainer.empty()){
+        finderType.first = startPos;
+        finderContainer.push_back(finderType);
+    }
+    // check which position to take
+    // if available add to finderContainer
+    // maybe check if target reached or some way to end it
+
+}
+

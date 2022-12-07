@@ -18,6 +18,7 @@ public:
     void CheckPathOverlap();
     void ClearPath();
     void PrintPath();
+    void FindPath(sf::Vector2i startPos, sf::Vector2i targetPos);
 
 
 private:
@@ -25,6 +26,7 @@ private:
     sf::Vector2i m_forkPos;
 
     std::vector<sf::Vector2i> m_pathContainer;
+    std::vector<std::pair<sf::Vector2i, bool [4]>> finderContainer;
 
 };
 #endif // PATHFINDER_H

@@ -48,11 +48,13 @@ private:
     int baseATK;
     int baseDEF;
     int baseSPD;
+    int baseMOV;
 
     int currentHP;
     int currentATK;
     int currentDEF;
     int currentSPD;
+    int currentMOV;
 
     int posx, posy;
     std::string texName;

@@ -43,6 +43,11 @@ void Character::loadCharactersList(){
 
         getline(charList, line);
         pos = line.find(delim, 0);
+        tmp = line.substr(pos+1);
+        int baseMOV = std::stoi(tmp);
+
+        getline(charList, line);
+        pos = line.find(delim, 0);
         std::string texName = line.substr(pos+1);
 
         getline(charList, line); // clean up
@@ -52,6 +57,7 @@ void Character::loadCharactersList(){
         charactersArr[index].baseATK = baseATK;
         charactersArr[index].baseDEF = baseDEF;
         charactersArr[index].baseSPD = baseSPD;
+        charactersArr[index].baseMOV = baseMOV;
         charactersArr[index].texName = texName;
 
         // initiate currentStats to base stats.
@@ -60,6 +66,7 @@ void Character::loadCharactersList(){
         charactersArr[index].currentATK = charactersArr[index].baseATK;
         charactersArr[index].currentDEF = charactersArr[index].baseDEF;
         charactersArr[index].currentSPD = charactersArr[index].baseSPD;
+        charactersArr[index].currentMOV = charactersArr[index].baseMOV;
         charactersArr[index].posx = 0;
         charactersArr[index].posy = 0;
 

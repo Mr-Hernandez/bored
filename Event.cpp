@@ -92,6 +92,8 @@ void Event::State_Game(Bus* m_bus, sf::Event event){
                     int posx = m_bus->s_cursor->GetPosx();
                     int posy = m_bus->s_cursor->GetPosy();
                     m_bus->s_pathFinder->AddPathPos(sf::Vector2i(posx, posy));
+                    int charIndex = m_bus->s_character->GetIndexFromPos(posx, posy);
+                    m_bus->s_character->SetCurrentChar(charIndex);
                 }
             }
         }
